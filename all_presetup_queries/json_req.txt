@@ -1,0 +1,6 @@
+{
+  "name":"xyz",
+  "email":"xyz@gmail.com",
+  "phone":"1023456789",
+  "dob":"1990-07-25"
+}
