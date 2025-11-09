@@ -4,10 +4,10 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import Container from "react-bootstrap/esm/Container";
 import { adminLogin } from "../services/adminService";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export function LoginAdmin() {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [validated, setValidated] = useState(false);
 
@@ -33,17 +33,26 @@ const navigate = useNavigate();
 
         console.log("Server reponse: ", data.message);
 
-        if(data.token){
-            Swal.fire({
+        if (data.token) {
+          Swal.fire({
             title: "Login Successful 🎉",
             text: "Welcome back, Admin!!",
             icon: "success",
             confirmButtonText: "OK",
             confirmButtonColor: "#28a745", // green button
             background: "#f0fff4", // light green background
-        }).then(() => {
-          navigate("/AdminDashBoard");
-        });
+          }).then(() => {
+            navigate("/AdminDashBoard");
+          });
+        } else {
+          Swal.fire({
+            title: "Error ❌",
+            text: "Wrong credentials!",
+            icon: "error",
+            confirmButtonText: "Retry",
+            confirmButtonColor: "#dc3545",
+            background: "#fff0f0",
+          });
         }
       }
       setValidated(true);
@@ -90,8 +99,8 @@ const navigate = useNavigate();
         </Form.Group>
 
         <Button variant="primary" type="submit">
-              Submit
-            </Button>
+          Submit
+        </Button>
       </Form>
     </Container>
   );

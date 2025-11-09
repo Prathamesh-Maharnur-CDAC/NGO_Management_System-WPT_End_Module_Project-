@@ -6,9 +6,8 @@ import Container from "react-bootstrap/esm/Container";
 import { volunteerLogin } from "../services/volunteerService";
 import { useNavigate } from "react-router-dom";
 
-
 export function LoginVolunteer() {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [validated, setValidated] = useState(false);
 
@@ -43,6 +42,15 @@ const navigate = useNavigate();
             background: "#f0fff4", // light green background
           }).then(() => {
             navigate("/VolunteerDashBoard");
+          });
+        } else {
+          Swal.fire({
+            title: "Error ❌",
+            text: "Wrong credentials!",
+            icon: "error",
+            confirmButtonText: "Retry",
+            confirmButtonColor: "#dc3545",
+            background: "#fff0f0",
           });
         }
       }
