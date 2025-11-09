@@ -9,6 +9,11 @@ export async function volunteerLogin(formData) {
       body: JSON.stringify(formData),
     });
     const data = await response.json();
+    if(response.status === 200){
+      localStorage.clear();
+      console.log(formData.email)
+      localStorage.setItem("email", formData.email)
+    }
     return data;
   } catch (error) {
     console.log(error);
