@@ -11,7 +11,7 @@ export async function volunteerLogin(formData) {
     const data = await response.json();
     if(response.status === 200){
       localStorage.clear();
-      console.log(formData.email)
+      // console.log(formData.email)
       localStorage.setItem("email", formData.email)
     }
     return data;
